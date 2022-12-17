@@ -1,5 +1,6 @@
 var fetchDatabtn = document.querySelector("#fetchDataBtn");
 var heading1 = document.querySelector("#heading1");
+var header = document.querySelector("#header");
 
 // var x = document.querySelector("#coord");
 
@@ -32,9 +33,6 @@ fecthingData().then((data)=>{
 }).then((data) =>{
 
     container = document.createElement("div");
-    var h1 = document.createElement("h1");
-    h1.innerText = "Weather Data";
-    container.appendChild(h1);
 
     var p1 = document.createElement("p");
     p1.innerText = "Location: " + data.name;
@@ -84,7 +82,22 @@ fecthingData().then((data)=>{
 
 function renderData(){
     fetchDatabtn.style.display= "none";
-    heading1.style.display = "none";
+
+    heading1.innerHTML = "Weather API";
+
+    var HeadingLat = document.createElement("p");
+    HeadingLat.innerText=`latitude: ${latitude}`;
+
+    var HeadingLon = document.createElement("p");
+    HeadingLon.innerText=`longitude: ${longitude}`;
+
+    header.appendChild(HeadingLat);
+    header.appendChild(HeadingLon);
+
+    var h1 = document.createElement("h1");
+    h1.innerText = "Weather Data";
+
+    document.body.appendChild(h1);
     document.body.appendChild(container);
 }
 
